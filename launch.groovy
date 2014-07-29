@@ -44,12 +44,13 @@ public class ScriptLauncher {
 		public Response get(@PathParam("token") String token
 		// TODO: @QueryParam("rootId") Integer iRootId
 		) throws JSONException {
-			System.out.println(token);
-			System.err.println("1");
-			JSONObject json = new JSONObject();
-			System.out.println("2");
-			json.put("composable", "scripts");
-			System.out.println("3");
+			JSONObject json = runScript();
+			// System.out.println(token);
+			// System.err.println("1");
+			// JSONObject json = new JSONObject();
+			// System.out.println("2");
+			// json.put("composable", "scripts");
+			// System.out.println("3");
 			return Response.ok().header("Access-Control-Allow-Origin", "*")
 					.entity(json.toString()).type("application/json").build();
 		}
@@ -61,10 +62,24 @@ public class ScriptLauncher {
 		public Response post(
 		// TODO: @QueryParam("rootId") Integer iRootId
 		) throws JSONException {
+			JSONObject json = runScript();
+			// System.out.println("1");
+			// System.err.println("1");
+			// JSONObject json = new JSONObject();
+			// System.out.println("2");
+			// json.put("method", "post");
+			// System.out.println("3");
+			return Response.ok().header("Access-Control-Allow-Origin", "*")
+					.entity(json.toString()).type("application/json").build();
+		}
+
+		private static JSONObject runScript() {
+			JSONObject json = new JSONObject();
 			System.out.println("aaa");
 			try {
 				System.out.println("aa");
-				Process theProcess = Runtime.getRuntime().exec(ScriptLauncher.unixCommandString);//"echo 'goodbye'");
+				Process theProcess = Runtime.getRuntime().exec(
+						ScriptLauncher.unixCommandString);// "echo 'goodbye'");
 				System.out.println("a");
 				BufferedReader br = new BufferedReader(new InputStreamReader(
 						theProcess.getInputStream()));
@@ -73,17 +88,14 @@ public class ScriptLauncher {
 					int returnCode = theProcess.waitFor();
 					System.out.println("c");
 					StringBuffer sb = new StringBuffer();
-					while(br.ready()) {
-						sb.append(br.readLine());						
+					while (br.ready()) {
+						sb.append(br.readLine());
 						System.out.println("d");
 					}
 					if (returnCode == 0) {
 						System.out.println("e");
-						JSONObject json = new JSONObject();
 						json.put("status", "success");
 						json.put("output", sb.toString());
-						return Response.ok().header("Access-Control-Allow-Origin", "*")
-								.entity(json.toString()).type("application/json").build();			
 					}
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -92,14 +104,7 @@ public class ScriptLauncher {
 				System.out.println(e);
 				e.printStackTrace(System.err);
 			}
-			//System.out.println("1");
-			//System.err.println("1");
-			JSONObject json = new JSONObject();
-			//System.out.println("2");
-			json.put("method", "post");
-			//System.out.println("3");
-			return Response.ok().header("Access-Control-Allow-Origin", "*")
-					.entity(json.toString()).type("application/json").build();
+			return json;
 		}
 	}
 
@@ -127,15 +132,27 @@ public class ScriptLauncher {
 				}
 				if (line.getArgs().length > 0) {
 					ScriptLauncher.unixCommandString = line.getArgs()[0];
-					System.out.println("command: " + ScriptLauncher.unixCommandString);
+					System.out.println("command: "
+							+ ScriptLauncher.unixCommandString);
 				}
 				if (line.getArgs().length == 0) {
 					System.out.println("No command specified");
 				}
 			}
 		}
-		HttpServer server = JdkHttpServerFactory.createHttpServer(new URI(
-				"http://localhost:" + portNumber + "/"), new ResourceConfig(
-				HelloWorldResource.class));
+		final String portNumberFinal = portNumber;
+		// new Thread() {
+		// @Override public void run() {
+		try {
+			HttpServer server = JdkHttpServerFactory.createHttpServer(new URI(
+					"http://localhost:" + portNumberFinal + "/"),
+					new ResourceConfig(HelloWorldResource.class));
+		} catch (Exception e) {
+			System.out.println(e);
+			System.exit(-1);
+		}
+		// }
+		// }.run();
+
 	}
 }

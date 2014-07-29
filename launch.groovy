@@ -19,11 +19,29 @@ public class Server {
         @Path("/")
         public static class HelloWorldResource { // Must be public
 
+                @GET
+                @Path("/{token}")
+                @Consumes("text/plain")
+                @Produces("application/json")
+                public Response get(
+                	  @PathParam("token") String token
+                	// TODO: @QueryParam("rootId") Integer iRootId
+                	) throws JSONException {
+                		System.out.println(token);
+                		System.err.println("1");
+                        JSONObject json = new JSONObject();
+                		System.out.println("2");
+                        json.put("composable", "scripts");
+                		System.out.println("3");
+					    return Response.ok().header("Access-Control-Allow-Origin", "*")
+						 			.entity(json.toString()).type("application/json").build();
+                }
+                
                 @POST
                 @Path("/")
                 @Consumes("text/plain")
                 @Produces("application/json")
-                public Response json(
+                public Response post(
                 	// TODO: @QueryParam("rootId") Integer iRootId
                 	) throws JSONException {
                 		System.out.println("1");

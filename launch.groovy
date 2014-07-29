@@ -1,7 +1,9 @@
 #!/usr/bin/env groovy
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.URI;
 
 import javax.ws.rs.Consumes;
@@ -43,7 +45,7 @@ public class ScriptLauncher {
 		@Produces("application/json")
 		public Response get(@PathParam("token") String token
 		// TODO: @QueryParam("rootId") Integer iRootId
-		) throws JSONException {
+		) throws JSONException, IOException {
 			JSONObject json = runScript();
 			// System.out.println(token);
 			// System.err.println("1");
@@ -59,50 +61,77 @@ public class ScriptLauncher {
 		@Path("/")
 		@Consumes("text/plain")
 		@Produces("application/json")
-		public Response post(
+		public Response post(String body
 		// TODO: @QueryParam("rootId") Integer iRootId
-		) throws JSONException {
+		) throws JSONException, IOException {
+			System.out.println(body);
+			System.out.println("1");
 			JSONObject json = runScript();
-			// System.out.println("1");
 			// System.err.println("1");
 			// JSONObject json = new JSONObject();
-			// System.out.println("2");
+			System.out.println("2");
 			// json.put("method", "post");
 			// System.out.println("3");
 			return Response.ok().header("Access-Control-Allow-Origin", "*")
 					.entity(json.toString()).type("application/json").build();
 		}
 
-		private static JSONObject runScript() {
+		private static JSONObject runScript() throws IOException {
 			JSONObject json = new JSONObject();
-			System.out.println("aaa");
-			try {
-				System.out.println("aa");
-				Process theProcess = Runtime.getRuntime().exec(
-						ScriptLauncher.unixCommandString);// "echo 'goodbye'");
-				System.out.println("a");
-				BufferedReader br = new BufferedReader(new InputStreamReader(
-						theProcess.getInputStream()));
-				System.out.println("b");
+			_new: {
 				try {
-					int returnCode = theProcess.waitFor();
-					System.out.println("c");
-					StringBuffer sb = new StringBuffer();
+					BufferedReader br = new BufferedReader(
+							new InputStreamReader(System.in));
+					BufferedWriter bw = new BufferedWriter(
+							new OutputStreamWriter(System.out));
 					while (br.ready()) {
-						sb.append(br.readLine());
+						String line = br.readLine();
+						System.out.println(line);
 						System.out.println("d");
+						bw.write(line);
+
 					}
-					if (returnCode == 0) {
-						System.out.println("e");
-						json.put("status", "success");
-						json.put("output", sb.toString());
-					}
-				} catch (InterruptedException e) {
+
+					// br.close();
+					// bw.flush();
+					// bw.close();
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			} catch (Exception e) {
-				System.out.println(e);
-				e.printStackTrace(System.err);
+			}
+			delete_this: {
+				if (false) {
+					System.out.println("aaa");
+					try {
+						System.out.println("aa");
+						Process theProcess = Runtime.getRuntime().exec(
+								ScriptLauncher.unixCommandString);// "echo 'goodbye'");
+						System.out.println("a");
+						BufferedReader br = new BufferedReader(
+								new InputStreamReader(
+										theProcess.getInputStream()));
+						System.out.println("b");
+						try {
+							int returnCode = theProcess.waitFor();
+							System.out.println("c");
+							StringBuffer sb = new StringBuffer();
+							while (br.ready()) {
+								sb.append(br.readLine());
+								System.out.println("d");
+							}
+							if (returnCode == 0) {
+								System.out.println("e");
+								json.put("status", "success");
+								json.put("output", sb.toString());
+							}
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+					} catch (Exception e) {
+						System.out.println(e);
+						e.printStackTrace(System.err);
+					}
+				}
 			}
 			return json;
 		}
@@ -127,16 +156,22 @@ public class ScriptLauncher {
 					System.out.println(portNumber);
 				}
 
-				if (line.getArgs().length > 1) {
-					portNumber = line.getArgs()[1];
-				}
-				if (line.getArgs().length > 0) {
-					ScriptLauncher.unixCommandString = line.getArgs()[0];
-					System.out.println("command: "
-							+ ScriptLauncher.unixCommandString);
-				}
-				if (line.getArgs().length == 0) {
-					System.out.println("No command specified");
+				// For now just use named args
+				if (false) {
+					_2_args: {
+						if (line.getArgs().length > 1) {
+							portNumber = line.getArgs()[1];
+						}
+						if (line.getArgs().length > 0) {
+							ScriptLauncher.unixCommandString = line.getArgs()[0];
+							System.out.println("command: "
+									+ ScriptLauncher.unixCommandString);
+						}
+
+						if (line.getArgs().length == 0) {
+							System.out.println("No command specified");
+						}
+					}
 				}
 			}
 		}

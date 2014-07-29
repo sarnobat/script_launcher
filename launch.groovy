@@ -46,9 +46,9 @@ public class ScriptLauncher {
 		public Response get(@PathParam("token") String token
 		// TODO: @QueryParam("rootId") Integer iRootId
 		) throws JSONException, IOException {
+			 System.err.println("A");
 			JSONObject json = runScript();
 			// System.out.println(token);
-			// System.err.println("1");
 			// JSONObject json = new JSONObject();
 			// System.out.println("2");
 			// json.put("composable", "scripts");
@@ -64,16 +64,16 @@ public class ScriptLauncher {
 		public Response post(String body
 		// TODO: @QueryParam("rootId") Integer iRootId
 		) throws JSONException, IOException {
-			System.out.println(body);
 			System.out.println("1");
-			JSONObject json = runScript();
+			System.out.println(body);
+//			JSONObject json = runScript();
 			// System.err.println("1");
 			// JSONObject json = new JSONObject();
-			System.out.println("2");
+//			System.out.println("2");
 			// json.put("method", "post");
 			// System.out.println("3");
 			return Response.ok().header("Access-Control-Allow-Origin", "*")
-					.entity(json.toString()).type("application/json").build();
+					.entity("success").type("application/json").build();
 		}
 
 		private static JSONObject runScript() throws IOException {
@@ -183,7 +183,7 @@ public class ScriptLauncher {
 					"http://localhost:" + portNumberFinal + "/"),
 					new ResourceConfig(HelloWorldResource.class));
 		} catch (Exception e) {
-			System.out.println(e);
+			e.printStackTrace();
 			System.exit(-1);
 		}
 		// }

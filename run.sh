@@ -1,7 +1,11 @@
 
 
+
 # works
-cat fifo | while true; do   nc -l -p 4458     ; done | tee fifo
+echo "Content-Length: 1" | cat - fifo | sh my_netcat2.sh 4458 | http_request_body.js | sed --unbuffered 's/i/o/' | tee fifo
+ 
+# works
+cat fifo | while true; do   nc -l -p 4458 ; done | tee fifo
 
 
 

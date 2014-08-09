@@ -1,14 +1,17 @@
+my_netcat.sh 4458 | http_request_body.js | tee temp.log | xargs -n 1 cypher_query.sh
 
 
+# works
 while true
 do
 {   
 	# For openbsd, add -p to nc
 	 echo 'HTTP/1.0 200 OK
 Access-Control-Allow-Origin: *
-Content-Type: text/plain\n\n' \
-'{"Hello":"world"}' | cat - body.txt \
-	 | nc -l -p 4458
+Content-Type: text/plain
+Content-Length: 4\n\n' \
+'{"Hello":"world"}' | cat - fifo \
+	 | nc -l -p 4458 | tee fifo
 }  
 done;
 

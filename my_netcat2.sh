@@ -1,0 +1,1 @@
+while true; do   cat header.txt - | nc -l -p $1 ; done 

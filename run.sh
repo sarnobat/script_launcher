@@ -1,7 +1,14 @@
-
 # Works
 #my_netcat.sh 4458 | grep --line-buffered HTTP | grep --line-buffered POST
-my_netcat.sh 4458 | http_request_body.js
+my_netcat.sh 4458 | http_request_body.js | tee temp.log | xargs -n 1 cypher_query.sh
+
+{ 
+echo 'foo
+'; echo "bar" 
+} | nc -l -p 4459
+ 
+
+
 exit;
 
 

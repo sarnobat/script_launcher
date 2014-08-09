@@ -12,7 +12,6 @@ javascript:(
 		/* main: 45, product: 29196, video: 37658, tech: 46, other: 29172 */
 		x.open('POST','http://netgear.rohidekar.com:4458', true);
 		x.setRequestHeader("Content-type","text/plain");
-		//x.setRequestHeader('User-Agent','XMLHTTP/1.0');
 		/*x.setRequestHeader("Connection","close");*/
 		x.onreadystatechange = 
 			function() {
@@ -20,9 +19,9 @@ javascript:(
 					if (x.status == 200) {
 						window.open('', '_self', ''); 
 						document.body.style.backgroundColor = "green";
-						/* console.debug(x.responseText);		 */
+						alert(x.responseText);
 						/*x.close();*/
-						x.abort();
+						/*x.abort();*/
 					} else {
 						document.body.style.backgroundColor = "red";
 					}

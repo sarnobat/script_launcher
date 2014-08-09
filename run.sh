@@ -1,5 +1,10 @@
 
 
+# works
+cat fifo | while true; do   nc -l -p 4458     ; done | tee fifo
+
+
+
 
 # works
 while true
@@ -11,7 +16,7 @@ Access-Control-Allow-Origin: *
 Content-Type: text/plain
 Content-Length: 100\n\n' \
 '{"Hello":"world"}' | cat - fifo \
-	 | nc -l -p 4458 | http_request_body.js | xargs -n 1 cypher_query.sh | tee fifo
+	 | nc -l -p 4458 | http_request_body.js | xargs -n 1 cypher_query.sh | tee fifo 
 }  
 done;
 

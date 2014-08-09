@@ -1,4 +1,4 @@
-my_netcat.sh 4458 | http_request_body.js | tee temp.log | xargs -n 1 cypher_query.sh
+
 
 
 # works
@@ -9,9 +9,9 @@ do
 	 echo 'HTTP/1.0 200 OK
 Access-Control-Allow-Origin: *
 Content-Type: text/plain
-Content-Length: 4\n\n' \
+Content-Length: 100\n\n' \
 '{"Hello":"world"}' | cat - fifo \
-	 | nc -l -p 4458 | tee fifo
+	 | nc -l -p 4458 | http_request_body.js | xargs -n 1 cypher_query.sh | tee fifo
 }  
 done;
 

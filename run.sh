@@ -1,3 +1,8 @@
+while true; 
+do cat header20.txt fifo | nc -l -p 4458  | http_request_body.js | sed --unbuffered 's/i/o/' | xargs -n 1 cypher_query.sh > fifo; done;
+
+exit;
+
 # works
 while true; do cat header20.txt fifo | nc -l -p 4458  | http_request_body.js | sed --unbuffered 's/i/o/' | xargs -n 1 cypher_query.sh > fifo; done;
 

@@ -1,11 +1,11 @@
-
-
+# works
+while true; do cat header20.txt fifo | nc -l -p 4458  | http_request_body.js | sed --unbuffered 's/i/o/' | xargs -n 1 cypher_query.sh > fifo; done;
 
 # works
-echo "Content-Length: 1" | cat - fifo | sh my_netcat2.sh 4458 | http_request_body.js | sed --unbuffered 's/i/o/' | tee fifo
+#cat fifo | sh my_netcat2.sh 4458 | http_request_body.js | sed --unbuffered 's/i/o/' | xargs -n 1 cypher_query.sh | tee fifo
  
 # works
-cat fifo | while true; do   nc -l -p 4458 ; done | tee fifo
+#cat fifo | while true; do   nc -l -p 4458 ; done | tee fifo
 
 
 

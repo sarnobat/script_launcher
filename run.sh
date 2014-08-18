@@ -1,10 +1,10 @@
 while true; do \
- 	cat $(echo header20.txt) fifo \
+ 	cat $(header.sh) fifo \
 	| nc -l -p 4458  \
 	| http_request_body.js \
 	| sed --unbuffered 's/i/o/' \
 	| xargs -n 1 cypher_query.sh  \
-	> fifo ;
+	| tee fifo
 done;
 
 exit;

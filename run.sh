@@ -1,5 +1,5 @@
 while true; do \
-	cat $(echo header20.txt) fifo \
+ 	cat $(echo header20.txt) fifo \
 	| nc -l -p 4458  \
 	| http_request_body.js \
 	| sed --unbuffered 's/i/o/' \

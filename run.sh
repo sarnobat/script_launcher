@@ -1,5 +1,6 @@
 while true; do \
- 	cat $(header.sh) fifo fifo_size \
+	cat fifo \
+ 	| cat $(header.sh) - fifo_size  \
 	| nc -l -p 4458  \
 	| http_request_body.js \
 	| sed --unbuffered 's/i/o/' \

@@ -37,8 +37,9 @@ rl.on('line', function(line){
 			bodyBegan = false;
 			contentLengthConsumed = 0;
 			contentLength = 0;
-			// If we exit, the process doesn't start again for followup requests.
-			//process.exit(0);
+			// If we exit, the process doesn't start again for followup requests
+			// if we use netcat's --keep-alive setting. We have to use a loop
+			process.exit(0);
 		}
 	}
 	//console.log('10');

@@ -1,13 +1,13 @@
 while true; do \
 	cat fifo \
- 	| cat $(header.sh) - fifo_size  \
+	| tee cat_fifo_result \
+ 	| header_add.sh \
 	| nc -l -p 4458  \
 	| http_request_body.js \
 	| sed --unbuffered 's/i/o/' \
 	| xargs -n 1 cypher_query.sh  \
 	| tee fifo \
-	| http_content_size.js \
-	| tee fifo_size
+	| tee body.txt 
 done;
 
 exit;

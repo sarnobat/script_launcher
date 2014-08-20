@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+require('epipebomb')();
 var parser = require('http-string-parser');
 var readline = require('readline');
 var devnull = require('dev-null');
@@ -11,12 +12,13 @@ var rl = readline.createInterface({
 var contentLengthConsumed = 1;
 
 rl.on('line', function(line){
-	console.log('http_content_size.js : open()');
+	//console.log('http_content_size.js : open()');
 	var contentLengthDelta = getByteLength(line);
 	contentLengthConsumed += contentLengthDelta;
 	process.stdout.write('\n');
 	
 }).on('close', function() {
+	// This won't get called. The client terminates the connection with an "error"
 	process.stdout.write(contentLengthConsumed + '\n');
 	console.log('http_content_size.js : close()');
 	contentLengthConsumed = 1;

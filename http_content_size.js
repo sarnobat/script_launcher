@@ -11,12 +11,15 @@ var rl = readline.createInterface({
 var contentLengthConsumed = 1;
 
 rl.on('line', function(line){
+	console.log('http_content_size.js : open()');
 	var contentLengthDelta = getByteLength(line);
 	contentLengthConsumed += contentLengthDelta;
 	process.stdout.write('\n');
 	
 }).on('close', function() {
 	process.stdout.write(contentLengthConsumed + '\n');
+	console.log('http_content_size.js : close()');
+	contentLengthConsumed = 1;
 });
 
 function getByteLength(normal_val) {

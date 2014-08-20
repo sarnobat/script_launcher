@@ -1,10 +1,11 @@
 while true; do \
- 	cat $(header.sh) fifo \
+ 	cat $(header.sh) fifo fifo_size \
 	| nc -l -p 4458  \
 	| http_request_body.js \
 	| sed --unbuffered 's/i/o/' \
 	| xargs -n 1 cypher_query.sh  \
-	| tee fifo
+	| tee fifo \
+	| tee fifo_size
 done;
 
 exit;

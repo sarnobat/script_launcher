@@ -1,13 +1,13 @@
 while true; do \
 	cat fifo \
-	| tee cat_fifo_result \
- 	| header_add.sh \
+	| tee cat_fifo_result.log \
+ 	| http_response_header_add.sh \
 	| nc -l -p 4458  \
 	| http_request_body.js \
 	| sed --unbuffered 's/i/o/' \
-	| xargs -n 1 cypher_query.sh  \
+	| xargs -n 1 get_urls.sh  \
 	| tee fifo \
-	| tee body.txt 
+	| tee body.log
 done;
 
 exit;

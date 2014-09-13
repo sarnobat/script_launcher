@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery/jquery-1.9.1.js">
+</script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+		$.ajax({
+			type: "POST",
+			url: "http://netgear.rohidekar.com:4459",
+			data: "45\n"
+		})
+		.done(function( msg ) {
+			alert( msg );
+		});
+  });
+});
+</script>
+</head>
+<body>
+
+<textarea id="urls">http://www.yahoo.com</textarea>
+<button>Stash this</button>
+<div id="items"></div>
+
+</body>
+</html>

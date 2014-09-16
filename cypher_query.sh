@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #while
 read x ; 
-#echo "root: $1";
+#echo "root: $1 $x";
 #do 
 #exit;
 curl -d'{"query":"start n=node('$1') match n-[r:CONTAINS]->c where c.title? <> \"\" return \"title : \" + c.title? limit 500;"}' \

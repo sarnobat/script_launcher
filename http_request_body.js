@@ -13,7 +13,16 @@ var contentLengthConsumed = 1;
 var contentLength;
 rl.on('line', function(line){
 
-	console.warn('1' + line);
+	var resourceLine = line.match(/.*\/\?param1=(.*)HTTP\/1.1/);
+	if (resourceLine != null && resourceLine.length > 0) {
+		var paramValue = resourceLine[1];
+		//console.log("Param: " + paramValue);
+		process.stdout.write(paramValue + '\n');
+	} else {
+		//console.log("Not a resource line: " + line +"\n");
+	}
+
+	console.warn('http_request_body.js [DEBUG] ' + line);
 	contentLengthLine = line.match(/Content-Length: (.*)/);
 	//console.warn("content length in header: " + contentLength);
 	//console.warn("content length consumed: " + contentLengthConsumed);

@@ -21,7 +21,7 @@ stdin.on('end', function() {
 	process.stderr.write("\n>>> 3");
 	var body_size = getByteLength(dataJsonString);
 	process.stderr.write("\n>>> 4");
-	var response = "HTTP/1.1 200 OK\nAccess-Control-Allow-Origin: *\nContent-length : " + body_size + "\nContent-Type: application/json\n" + dataJsonString;
+	var response = "HTTP/1.1 200 OK\nAccess-Control-Allow-Origin: *\nContent-length : " + 2000 + "\nContent-Type: application/json\n" + dataJsonString;
 
 	process.stderr.write("\n>>> 5");
 	//console.log("DATA:\n" + dataJson.foo + "\nEND DATA");

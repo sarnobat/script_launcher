@@ -2,7 +2,7 @@ while true; do \
         cat fifo \
         | nc -l -p 4458  \
         | tee input.log \
-        | http_request_body.js \
+        | http_request_body.sh \
         | tee param.log \
         | sed --unbuffered 's/i/o/' \
         | head -1 \

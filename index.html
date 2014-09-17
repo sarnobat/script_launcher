@@ -36,7 +36,7 @@ $(document).ready(function(){
 								if (x.status == 200) {
 										window.open('', '_self', ''); 
 										document.body.style.backgroundColor = "green";
-										console.debug(">>" + x.responseText + "<<");
+										console.debug(">>" + eval(x.responseText).columns + "<<");
 										alert(x.responseText);
 										/*x.close();*/
 										/*x.abort();*/

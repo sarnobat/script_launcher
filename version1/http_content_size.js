@@ -20,7 +20,7 @@ rl.on('line', function(line){
 }).on('close', function() {
 	// This won't get called. The client terminates the connection with an "error"
 	process.stdout.write(contentLengthConsumed + '\n');
-	console.log('http_content_size.js : close()');
+//	console.log('http_content_size.js : close()');
 	contentLengthConsumed = 1;
 });
 

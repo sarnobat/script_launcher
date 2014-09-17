@@ -27,7 +27,7 @@ $(document).ready(function(){
 		document.body.style.backgroundColor = "orange";
 		var x = new XMLHttpRequest();
 		/* main: 45, product: 29196, video: 37658, tech: 46, other: 29172 */
-		x.open('POST','http://netgear.rohidekar.com:4459', true);
+		x.open('POST','http://netgear.rohidekar.com:4458', true);
 		x.setRequestHeader("Content-type","text/plain");
 		/*x.setRequestHeader("Connection","close");*/
 		x.onreadystatechange = 
@@ -36,6 +36,7 @@ $(document).ready(function(){
 								if (x.status == 200) {
 										window.open('', '_self', ''); 
 										document.body.style.backgroundColor = "green";
+										console.debug(">>" + x.responseText + "<<");
 										alert(x.responseText);
 										/*x.close();*/
 										/*x.abort();*/

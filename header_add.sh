@@ -4,7 +4,7 @@ body=""
 
 # problem: there is no end of input so we never out of this loop
 while read line; do  \
-	echo "Read a line\n" >> temp.log \
+	echo "Read a line\n" >> temp.log 
 	body="$body ${line}"; 
 done
 

@@ -1,9 +1,10 @@
 while true; do \
 	cat fifo \
-	| tee cat_fifo_result.log \
+	| tee -a cat_fifo_result.log \
 	| http_response_header_add.sh \
+	| tee -a http_response.log \
 	| nc -l -p 4458  \
-	| tee input.log \
+	| tee -a input.log \
 	| http_request_body.js \
 	| sed --unbuffered 's/i/o/' \
 	| xargs -n 1 get_urls.sh  > fifo

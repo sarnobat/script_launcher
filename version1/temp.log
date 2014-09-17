@@ -904,3 +904,34 @@ calculated body size
 Body is:  { "columns" : [ "c.title?" ], "data" : [ [ "Study of Men Dancing Reveals Moves Ladies Love" ], [ "Top 10 Reasons Every Nerdy Person Should Learn to Dance | Dance World Takeover" ] ] }
 wrote response
 starting
+starting
+Read a line
+
+Read a line
+
+Read a line
+
+Read a line
+
+Read a line
+
+Read a line
+
+collected stdin
+calculated body size 
+Body is:  { "message" : "expected node id, or *n"start n=node() match n-[r:CONTAINS]->c where c.title? <> "" return c.title? limit 2;"n ^", "exception" : "SyntaxException", "fullname" : "org.neo4j.cypher.SyntaxException", "stacktrace" : [ "org.neo4j.cypher.internal.parser.v1_9.CypherParserImpl.parse(CypherParserImpl.scala:45)", "org.neo4j.cypher.CypherParser.parse(CypherParser.scala:44)", "org.neo4j.cypher.ExecutionEngine$$anonfun$prepare$1.apply(ExecutionEngine.scala:80)", "org.neo4j.cypher.ExecutionEngine$$anonfun$prepare$1.apply(ExecutionEngine.scala:80)", "org.neo4j.cypher.internal.LRUCache.getOrElseUpdate(LRUCache.scala:37)", "org.neo4j.cypher.ExecutionEngine.prepare(ExecutionEngine.scala:80)", "org.neo4j.cypher.ExecutionEngine.execute(ExecutionEngine.scala:72)", "org.neo4j.cypher.ExecutionEngine.execute(ExecutionEngine.scala:76)", "org.neo4j.cypher.javacompat.ExecutionEngine.execute(ExecutionEngine.java:79)", "org.neo4j.server.rest.web.CypherService.cypher(CypherService.java:94)", "java.lang.reflect.Method.invoke(Method.java:606)", "org.neo4j.server.rest.security.SecurityFilter.doFilter(SecurityFilter.java:112)" ] }
+wrote response
+starting
+Read a line
+
+Read a line
+
+Read a line
+
+Read a line
+
+collected stdin
+calculated body size 
+Body is:  { "columns" : [ "c.title?" ], "data" : [ [ "Study of Men Dancing Reveals Moves Ladies Love" ], [ "Top 10 Reasons Every Nerdy Person Should Learn to Dance | Dance World Takeover" ] ] }
+wrote response
+starting

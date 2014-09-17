@@ -196,3 +196,9 @@ Content-length : 184
 Content-Type: application/json
 
 { "columns" : [ "c.title?" ], "data" : [ [ "Study of Men Dancing Reveals Moves Ladies Love" ], [ "Top 10 Reasons Every Nerdy Person Should Learn to Dance | Dance World Takeover" ] ] }
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-length : 184
+Content-Type: application/json
+
+{ "columns" : [ "c.title?" ], "data" : [ [ "Study of Men Dancing Reveals Moves Ladies Love" ], [ "Top 10 Reasons Every Nerdy Person Should Learn to Dance | Dance World Takeover" ] ] }

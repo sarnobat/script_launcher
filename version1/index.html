@@ -6,45 +6,29 @@
 <script>
 $(document).ready(function(){
 
-		var body = document.getElementsByTagName("body")[0];
-		body.innerHTML = "";
-		document.body.style.backgroundColor = "orange";
-		var x = new XMLHttpRequest();
-		x.open('POST','http://netgear.rohidekar.com:4458', true);
-		x.setRequestHeader("Content-type","text/plain");
-		x.onreadystatechange = 
-				function() {
-						if (x.readyState == 4) {
-								if (x.status == 200) {
-										window.open('', '_self', ''); 
-										document.body.style.backgroundColor = "green";
-										//console.debug(">>" + x.responseText + "<<");
-										//console.debug(">>" + JSON.parse(x.responseText) + "<<");
-										//alert(x.responseText);
-										body.innerHTML = x.responseText;
-								} else {
-										document.body.style.backgroundColor = "red";
-								}
-						}
-				};
-		x.send(encodeURIComponent(45) + "\n");
+	// My version of jquery can't do an AJAX post because it doesn't set the content 
+	// length automatically, and when I add it manually Chrome says it's an unsafe header
+	var body = document.getElementsByTagName("body")[0];
+	body.innerHTML = "";
+	document.body.style.backgroundColor = "orange";
+	var x = new XMLHttpRequest();
+	x.open('POST','http://netgear.rohidekar.com:4458', true);
+	x.setRequestHeader("Content-type","text/plain");
+	x.onreadystatechange = 
+		function() {
+			if (x.readyState == 4) {
+				if (x.status == 200) {
+					window.open('', '_self', ''); 
+					document.body.style.backgroundColor = "green";
+					var response = JSON.parse(x.responseText);
+					body.innerHTML = response.data;
+				} else {
+					document.body.style.backgroundColor = "red";
+				}
+			}
+		};
+	x.send(encodeURIComponent(45) + "\n");
 
-/*
-	var data = "45\n"; 
-	$.ajax({
-		type: "GET",
-		url: "http://netgear.rohidekar.com:4458",
-		data: data,
-		headers: {
-			"Content-type" : "text/plain",
-			"Content-Length": data.length,
-			//"Connection" : "close"
-			},
-		
-	})
-	.done(function( msg ) {
-		alert( msg );
-	}); */
 });
 </script>
 </head>

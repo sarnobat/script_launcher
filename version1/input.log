@@ -753,3 +753,45 @@ Accept-Encoding: gzip,deflate
 Accept-Language: en-US,en;q=0.8
 
 45
+POST / HTTP/1.1
+Host: netgear.rohidekar.com:4458
+Connection: keep-alive
+Content-Length: 3
+Cache-Control: max-age=0
+Origin: http://netgear.rohidekar.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36
+Content-type: text/plain
+Accept: */*
+Referer: http://netgear.rohidekar.com/launcher/
+Accept-Encoding: gzip,deflate
+Accept-Language: en-US,en;q=0.8
+
+45
+POST / HTTP/1.1
+Host: netgear.rohidekar.com:4458
+Connection: keep-alive
+Content-Length: 3
+Cache-Control: max-age=0
+Origin: http://netgear.rohidekar.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36
+Content-type: text/plain
+Accept: */*
+Referer: http://netgear.rohidekar.com/launcher/
+Accept-Encoding: gzip,deflate
+Accept-Language: en-US,en;q=0.8
+
+45
+POST / HTTP/1.1
+Host: netgear.rohidekar.com:4458
+Connection: keep-alive
+Content-Length: 3
+Cache-Control: max-age=0
+Origin: http://netgear.rohidekar.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36
+Content-type: text/plain
+Accept: */*
+Referer: http://netgear.rohidekar.com/launcher/
+Accept-Encoding: gzip,deflate
+Accept-Language: en-US,en;q=0.8
+
+45

@@ -37,7 +37,7 @@ $(document).ready(function(){
 										window.open('', '_self', ''); 
 										document.body.style.backgroundColor = "green";
 										console.debug(">>" + x.responseText + "<<");
-										console.debug(">>" + eval(x.responseText) + "<<");
+										console.debug(">>" + JSON.parse(x.responseText) + "<<");
 										alert(x.responseText);
 										/*x.close();*/
 										/*x.abort();*/

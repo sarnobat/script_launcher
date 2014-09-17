@@ -1,6 +1,7 @@
 while true; do \
 	cat fifo \
 	| tee -a cat_fifo_result.log \
+	| neo_shell_to_yurl_json.js \
 	| http_response_header_add.sh \
 	| tee -a http_response.log \
 	| nc -l -p 4458  \

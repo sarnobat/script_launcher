@@ -19,7 +19,7 @@ $(document).ready(function(){
 			if (x.readyState == 4) {
 				if (x.status == 200) {
 					window.open('', '_self', ''); 
-					document.body.style.backgroundColor = "green";
+					document.body.style.backgroundColor = "lightgreen";
 					var response = JSON.parse(x.responseText);
 					body.innerHTML = response.data;
 				} else {

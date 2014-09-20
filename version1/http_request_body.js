@@ -22,7 +22,7 @@ rl.on('line', function(line){
 		//console.log("Not a resource line: " + line +"\n");
 	}
 
-	console.warn('http_request_body.js [DEBUG] ' + line);
+//	console.warn('http_request_body.js [DEBUG] ' + line);
 	contentLengthLine = line.match(/Content-Length: (.*)/);
 	//console.warn("content length in header: " + contentLength);
 	//console.warn("content length consumed: " + contentLengthConsumed);
@@ -39,10 +39,10 @@ rl.on('line', function(line){
 		var contentLengthDelta = getByteLength(line);
 		contentLengthConsumed += contentLengthDelta;
 		//console.log(line);
-		console.warn('consumed ' + contentLengthConsumed);
+//		console.warn('consumed ' + contentLengthConsumed);
 		if (contentLengthConsumed >= contentLength) {
 			//console.log('11');
-			console.warn('exiting');
+//			console.warn('exiting');
 			bodyBegan = false;
 			contentLengthConsumed = 0;
 			contentLength = 0;

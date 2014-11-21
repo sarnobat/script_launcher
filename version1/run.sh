@@ -10,7 +10,7 @@ ls http_request_body.js 2>/dev/null || exit "Could not find http_request_body.js
 # tee -a must be used otherwise the file gets cleared before you can read it
 while true; do \
 	cd $DIR
-	echo $CWD
+	echo $PWD
 	cat fifo \
 	| tee -a ~/4458_fifo.log \
 	| $DIR/neo_shell_to_yurl_json.js \

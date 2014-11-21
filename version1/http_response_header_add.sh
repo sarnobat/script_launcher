@@ -12,7 +12,7 @@ done
 #body=`cat`
 
 #echo "collected stdin" #>> temp.log 
-
+echo "PWD = $PWD"
 body_size_with_newlines=`echo $body | http_content_size.js | perl -pe 's{^\n}{}g'`
 body_size=$body_size_with_newlines
 

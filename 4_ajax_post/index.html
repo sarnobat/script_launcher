@@ -1,0 +1,24 @@
+<html>
+<head>
+<!-- script src="jquery/jquery-1.9.1.js" -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" />
+</script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $.getJSON("http://netgear.rohidekar.com:4462?param1=" + encodeURIComponent(document.getElementById("urls").innerHTML),function(result){
+      $.each(result, function(i, field){
+        $("#items").append(i + " " + field + " ");
+      });
+    });
+  });
+});
+</script>
+</head>
+<body>
+
+  <div id="items"></div>
+
+</body>
+</html>
+

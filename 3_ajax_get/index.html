@@ -1,0 +1,20 @@
+<html>
+<head>
+<!-- script src="jquery/jquery-1.9.1.js" -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js" />
+</script>
+<script>
+$(document).ready(function(){
+    $.get("http://netgear.rohidekar.com:4462", function(result){
+      $("#items").append(result);
+    });
+});
+</script>
+</head>
+<body>
+<h3>Ajax response:</h3>
+  <div id="items"></div>
+
+</body>
+</html>
+

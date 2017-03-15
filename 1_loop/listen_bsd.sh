@@ -4,5 +4,5 @@
 while true; do \
         echo "current working directory is $PWD"
         echo "45"  \
-        | nc -l -p $1
+        | nc -l $1
 done;

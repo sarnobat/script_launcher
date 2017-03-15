@@ -10,23 +10,17 @@ stdin.on('data', function(chunk) {
 });
 
 stdin.on('end', function() {
-	//process.stderr.write(">>>>>>>>>>>>"+data + '<<<<<<<<<<<<<\n');
-	process.stderr.write("\n>>> 1");
+	data = '{ foo : bar }';
 	var dataJsonString = data;
-	process.stderr.write("\n>>> 2" + dataJsonString);
-	if (dataJsonString == null) {
-		process.stderr.write("\n>>> dataJsonString is null");
-	}
-	var dataJson = JSON.parse(dataJsonString);
-	process.stderr.write("\n>>> 3");
+	var dataJson = dataJsonString;
 	var body_size = getByteLength(dataJsonString);
-	process.stderr.write("\n>>> 4");
-	var response = "HTTP/1.1 200 OK\nAccess-Control-Allow-Origin: *\nContent-length : " + body_size + "\nContent-Type: application/json\n" + dataJsonString;
-
+	process.stderr.write("\n>>> 4 - size: " + body_size);
+	var response = "HTTP/1.1 200 OK\nAccess-Control-Allow-Origin: *\nContent-length : " 
+		+ body_size 
+		+ "\nContent-Type: application/json\n\n" + dataJsonString;
 	process.stderr.write("\n>>> 5");
-	//console.log("DATA:\n" + dataJson.foo + "\nEND DATA");
 	process.stdout.write(response + '\n');
-	process.stderr.write("\n>>> 6");
+	process.stderr.write("\n>>> 6 - " + response);
 	process.exit(0);
 });
 
